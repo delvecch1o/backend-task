@@ -43,4 +43,14 @@ class ContractController extends Controller
             'Detalhes Do Contrato' => $showDetailsContract
         ]);
     }
+
+    public function show()
+    {
+        $showListOfContracts = $this->contractService->showService();
+        
+        return response()->json([
+            'Lista de Contratos' => $showListOfContracts,
+        ]);
+    }
+
 }

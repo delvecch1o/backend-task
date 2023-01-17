@@ -6,6 +6,7 @@ use App\Models\Contract;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
 
 class ContractService
 {
@@ -52,6 +53,43 @@ class ContractService
         $user = Auth::user();
         $showDetailsContract =  $user->clients()->find($contract->id);
         return $showDetailsContract;
+    }
+
+    public function showService()
+    {
+        $userType = Auth::user()->type_user;
+
+        if($userType === 'contractor')
+        {
+            $user = Auth::user();
+            $listOfContractsContractor  = $user
+                            ->contractors()
+                            ->where('status', '<>', 'terminated')
+                            ->get();
+            return [
+                'Profile' => $userType,
+                'list' => $listOfContractsContractor,
+               
+            ];
+        }
+        
+        else 
+        {
+            $user = Auth::user();
+            $listOfContractsClients  = $user
+                        ->clients()
+                        ->where('status', '<>', 'terminated')
+                        ->get();
+            return [
+                'Profile' => $userType,
+                'list' => $listOfContractsClients,
+                
+            ];
+            
+        }
+        
+
+      
     }
 
 }
