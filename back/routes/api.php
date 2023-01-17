@@ -14,6 +14,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('logout', [AuthProfileController::class, 'logout']);
 
     Route::post('contract', [ContractController::class, 'store']);
+    Route::get('contracts/{contract}', [ContractController::class, 'showDetails']);
 
 });
 

@@ -23,10 +23,14 @@ class Contract extends Model
         return $this->belongsTo(User::class , 'client_id');
     }
     
-
     public function contractor()
     {
         return $this->belongsTo(User::class , 'contractor_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
     
 

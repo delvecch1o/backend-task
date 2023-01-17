@@ -8,6 +8,7 @@ use App\Services\ContractService;
 use App\Http\Requests\ContractRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Contract;
 
 class ContractController extends Controller
 {
@@ -33,5 +34,13 @@ class ContractController extends Controller
                 'message' => 'Contrato criado com Sucesso!'
             ]);
        
+    }
+
+    public function showDetails(Contract $contract)
+    {
+        $showDetailsContract = $this->contractService->showDetailsService($contract);
+        return response()->json([
+            'Detalhes Do Contrato' => $showDetailsContract
+        ]);
     }
 }

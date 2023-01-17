@@ -47,4 +47,11 @@ class ContractService
         
     }
 
+    public function showDetailsService(Contract $contract)
+    {
+        $user = Auth::user();
+        $showDetailsContract =  $user->clients()->find($contract->id);
+        return $showDetailsContract;
+    }
+
 }

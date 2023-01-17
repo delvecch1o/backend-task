@@ -31,10 +31,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
 
-    public function contract()
+    public function contractors()
     {
-        return $this->hasOne(Contract::class);
+        return $this->hasMany(Contract::class , 'contractor_id');  
+    }
+
+    public function clients()
+    {
+        return $this->hasMany(Contract::class , 'client_id');  
     }
 
 }
