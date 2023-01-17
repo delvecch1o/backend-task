@@ -17,7 +17,6 @@ class Contract extends Model
        'contractor_id',
         
     ];
-    
     public function client()
     {
         return $this->belongsTo(User::class , 'client_id');
@@ -31,6 +30,11 @@ class Contract extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
     }
     
 
