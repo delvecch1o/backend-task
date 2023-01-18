@@ -19,6 +19,7 @@ class CreateJobsTable extends Migration
             $table->decimal('price');
             $table->boolean('paid')->default(false);
             $table->date('payment_date')->nullable();
+            $table->boolean('active')->nullable()->default(false);
 
             $table->unsignedBigInteger('contractor_id');
             $table->unsignedBigInteger('contract_id');

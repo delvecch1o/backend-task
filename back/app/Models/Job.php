@@ -14,14 +14,26 @@ class Job extends Model
        'price',
        'paid',
        'payment_date',
+       'active',
        'contractor_id',
        'contract_id',
         
     ];
-
-    public function job()
+  
+    public function contractor()
     {
-        return $this->belongsTo(Contract::class);
+        return $this->belongsTo(User::class , 'contractor_id');
     }
+
+    public function contract()
+    {
+        return $this->belongsTo(User::class , 'contract_id');
+    }
+
+     public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
 }

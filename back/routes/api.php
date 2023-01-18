@@ -19,6 +19,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('contracts', [ContractController::class, 'show']);
 
     Route::post('job', [JobController::class, 'store']);
+    Route::get('jobs/unpaid', [JobController::class, 'show']);
 
 });
 

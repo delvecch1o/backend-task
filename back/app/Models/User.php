@@ -43,4 +43,14 @@ class User extends Authenticatable
         return $this->hasMany(Contract::class , 'client_id');  
     }
 
+    public function jobsContractors()
+    {
+        return $this->hasMany(Job::class , 'contractor_id');  
+    }
+
+    public function jobsClients()
+    {
+        return $this->hasMany(Job::class , 'contract_id');  
+    }
+
 }

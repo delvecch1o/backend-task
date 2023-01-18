@@ -37,4 +37,13 @@ class JobController extends Controller
             ]);
        
     }
+
+    public function show()
+    {
+        $showList = $this->jobService->showService();
+        
+        return response()->json([
+            'Lista de Trabalhos' => $showList,
+        ]);
+    }
 }
