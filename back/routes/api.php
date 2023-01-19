@@ -20,6 +20,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('job', [JobController::class, 'store']);
     Route::get('jobs/unpaid', [JobController::class, 'show']);
+    Route::post('jobs/{job}/pay', [JobController::class, 'payment']);
 
 });
 

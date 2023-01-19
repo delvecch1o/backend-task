@@ -9,6 +9,7 @@ use App\Http\Requests\JobRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Contract;
+use App\Models\Job;
 
 class JobController extends Controller
 {
@@ -46,4 +47,18 @@ class JobController extends Controller
             'Lista de Trabalhos' => $showList,
         ]);
     }
+
+    public function payment(Request $request, Job $job)
+    {
+        $payment = $this->jobService->makePayment($job);
+        
+        
+        return response()->json([
+            'message' => 'Pagamento realizado com sucesso!',
+            'Pagamento do Trabalaho' => $payment,
+            
+        ]);
+    }
+
+
 }
