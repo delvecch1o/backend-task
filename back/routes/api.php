@@ -6,6 +6,7 @@ use App\Http\Controllers\API\AuthProfileController;
 use App\Http\Controllers\API\ContractController;
 use App\Http\Controllers\API\JobController;
 use App\Http\Controllers\API\DepositController;
+use App\Http\Controllers\API\AdminController ;
 
 Route::post('auth/profile', [ AuthProfileController::class, 'profile']);
 
@@ -24,6 +25,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('jobs/{job}/pay', [JobController::class, 'payment']);
 
     Route::post('balances/deposit', [DepositController::class, 'deposit']);
+
+    Route::get('admin/best-profession', [AdminController::class, 'query']);
 
 });
 
