@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthProfileController;
 use App\Http\Controllers\API\ContractController;
 use App\Http\Controllers\API\JobController;
+use App\Http\Controllers\API\DepositController;
 
 Route::post('auth/profile', [ AuthProfileController::class, 'profile']);
 
@@ -21,6 +22,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('job', [JobController::class, 'store']);
     Route::get('jobs/unpaid', [JobController::class, 'show']);
     Route::post('jobs/{job}/pay', [JobController::class, 'payment']);
+
+    Route::post('balances/deposit', [DepositController::class, 'deposit']);
 
 });
 
